@@ -1,12 +1,12 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #261f5d;
+  --foreground: #f1e9e9;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #261f5d;
+    --foreground: #f1e9e9;
   }
 }
 
@@ -39,4 +39,9 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.moveLeft {
+  display: flex;
+  flex-direction: row-reverse;
 }
