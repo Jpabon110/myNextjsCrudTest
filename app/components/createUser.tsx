@@ -18,6 +18,24 @@ interface UserParams {
 
 const CreateUser = ( params: UserParams  ) => {
 
+  const formatRut = (value: string): string => {
+    const cleanedValue = value.replace(/[^0-9kK]/g, '').toUpperCase();
+
+    if (cleanedValue.length === 0) return cleanedValue;
+    const rutNumbers = cleanedValue.slice(0, -1);
+    const dv = cleanedValue.slice(-1);
+
+    let formattedRut = '';
+    for (let i = rutNumbers.length - 1, j = 1; i >= 0; i--, j++) {
+      formattedRut = rutNumbers[i] + formattedRut;
+      if (j % 3 === 0 && i !== 0) {
+        formattedRut = '.' + formattedRut;
+      }
+    }
+
+    return `${formattedRut}-${dv}`;
+  }
+
     const { user, setUser, createNewUser } = params
 
     return (
@@ -47,7 +65,7 @@ const CreateUser = ( params: UserParams  ) => {
           required
           id="outlined-required"
           value={user.rut}
-          onChange={(e) => setUser({ ...user, rut: e.target.value })}
+          onChange={(e) => setUser({ ...user, rut: formatRut(e.target.value) })}
           label="Rut"
         />
         <TextField
