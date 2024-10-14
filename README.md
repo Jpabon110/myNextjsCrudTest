@@ -1,17 +1,23 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Installing
+```bash
+npm install
+```
+
+## Create file .env
+
+create a file in the root project named `.env.local` and inside put it:
+```bash
+NEXT_PUBLIC_BACK_END_URL_BASE="http://localhost:3000"
+```
+
 ## Getting Started
 
-First, run the development server:
+Next, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
