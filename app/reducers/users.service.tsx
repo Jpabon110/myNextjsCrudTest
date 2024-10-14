@@ -1,7 +1,9 @@
 import { User } from "../interfaces/user.interface";
 
+const URL_BASE = process.env.NEXT_PUBLIC_BACK_END_URL_BASE || 'http://localhost:3000';
+
 const create = async (user: User): Promise<User> => {
-    const result = await fetch('http://localhost:3000/users', {
+    const result = await fetch(`${URL_BASE}/users`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -15,7 +17,7 @@ const create = async (user: User): Promise<User> => {
 }
 
 const getAll = async (): Promise<User[]> => {
-    const result = await fetch('http://localhost:3000/users',{
+    const result = await fetch(`${URL_BASE}/users`,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -28,7 +30,7 @@ const getAll = async (): Promise<User[]> => {
 }
 
 const update = async (user: User): Promise<User> => {
-    const result = await fetch(`http://localhost:3000/users/${user.id}`, {
+    const result = await fetch(`${URL_BASE}/users/${user.id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -42,7 +44,7 @@ const update = async (user: User): Promise<User> => {
 }
 
 const remove = async (user: User): Promise<void> => {
-   await fetch(`http://localhost:3000/users/${user.id}`, {
+   await fetch(`${URL_BASE}/users/${user.id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
